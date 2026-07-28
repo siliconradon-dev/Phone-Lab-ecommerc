@@ -158,12 +158,141 @@
                 @endforelse
             </div>
         </section>
-        <!-- slider_section - end
-                                                                        ================================================== -->
 
-        <!-- policy_section - start
-                                                                        ================================================== -->
-        <section class="policy_section">
+
+
+
+
+
+
+
+
+    <div class=" header_bottom" style="background: red">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-md-3 col-6">
+                    <div class="allcategories_dropdown">
+                        <button class="allcategories_btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#allcategories_collapse" aria-expanded="false"
+                            aria-controls="allcategories_collapse">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="15" height="13" viewBox="0 0 15 13">
+                                <image width="15" height="13"
+                                    xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANAgMAAAALcNzSAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACVBMVEX+//3+//0AAABvRd2oAAAAAXRSTlMAQObYZgAAAAFiS0dEAmYLfGQAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQflBwIBIhVZ2fz2AAAAGUlEQVQI12MIDQ0NYQATaAAshEUcJgvVBgDy4QdJZv6kzwAAAABJRU5ErkJggg==" />
+                            </svg>
+                            All Categories
+                        </button>
+                        <div class="allcategories_collapse collapse" id="allcategories_collapse">
+                            <div class="card card-body">
+                                <ul class="allcategories_list ul_li_block">
+                                    @foreach ($globalCategories as $gCategory)
+                                        <li>
+                                            <a
+                                                href="{{ route('phone_lab.shop_grid', ['category' => $gCategory->id]) }}">
+                                                <i
+                                                    class="{{ $gCategory->icon_class ?? 'fa-duotone fa-list-alt' }}"></i>
+                                                {{ $gCategory->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col col-md-6">
+                    <form method="GET" id="searchForm" action="{{ route('phone_lab.shop_grid') }}">
+                        <div class="advance_serach position-relative">
+
+                            <div class="form_item">
+                                <input type="search" id="searchInput" name="search" placeholder="Search Products..."
+                                    value="{{ request('search') }}" autocomplete="off">
+
+                                <!-- suggestion box -->
+                                <div id="suggestions" class="list-group position-absolute w-100"
+                                    style="z-index: 999; display:none;">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="search_btn">
+                                <i class="far fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('#searchInput').on('keyup', function() {
+                let query = $(this).val();
+
+                if (query.length < 2) {
+                    $('#suggestions').hide();
+                    return;
+                }
+
+                $.ajax({
+                    url: "{{ route('products.search') }}",
+                    type: "GET",
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+
+                        let html = '';
+
+                        if (data.length > 0) {
+                            data.forEach(product => {
+                                html += `
+                            <a href="/shop/${product.id}"
+                               class="list-group-item list-group-item-action">
+                                ${product.name}
+                            </a>
+                        `;
+                            });
+                        } else {
+                            html = `<div class="list-group-item">No results</div>`;
+                        }
+
+                        $('#suggestions').html(html).show();
+                    }
+                });
+            });
+
+            // hide when click outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('#searchInput').length) {
+                    $('#suggestions').hide();
+                }
+            });
+
+        });
+    </script>
+
+
+
+
+
+
+{{-- headue --}}
+
+
+        <section class="mt-4 policy_section">
             <div class="policy_item">
                 <div class="item_icon">
                     <i class="icon icon-Truck"></i>
@@ -229,7 +358,7 @@
 
         <!-- category_section - start
                                                                         ================================================== -->
-        <section class="category_section section_space" style="background: black">
+        <section class="category_section section_space" >
             <div class="container">
                 <div class="mb-0 section_title">
                     <h2 class="title_text"><i class="fa-duotone fa-fire"></i> Top Categories</h2>
