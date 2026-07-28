@@ -23,7 +23,7 @@
         <section class="about_section">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col col-md-6 order-last">
+                    <div class="order-last col col-md-6">
                         <div class="about_image">
                             <img src="{{ asset('/assets/images/about/about_image.png') }}" alt="About Image">
                         </div>
@@ -33,7 +33,7 @@
                             <h3 class="about_title">About us
                             </h3>
                             <p>
-                                At Megha Mobile (Pvt) Ltd, we believe in connecting you with the best of the tech world. We specialize in offering an extensive collection of genuine smartphones, high-quality mobile accessories, and cutting-edge gadgets designed to elevate your everyday digital experience.
+                                At Phone Lab, we believe in connecting you with the best of the tech world. We specialize in offering an extensive collection of genuine smartphones, high-quality mobile accessories, and cutting-edge gadgets designed to elevate your everyday digital experience.
 Our commitment is built on three core pillars: providing 100% original products, offering highly competitive market prices, and delivering exceptional customer service. Whether you are looking for the latest flagship phone or reliable accessories to protect your device, we ensure a seamless and trustworthy shopping experience tailored to your needs.
                             </p>
                             <ul class="counter_wrap ul_li">
@@ -73,7 +73,7 @@ Our commitment is built on three core pillars: providing 100% original products,
                                 Creative Design
                             </h3>
                             <p>
-                               Premium build quality and sleek designs selected from the world's top smartphone and accessory brands to match your modern lifestyle. 
+                               Premium build quality and sleek designs selected from the world's top smartphone and accessory brands to match your modern lifestyle.
                             </p>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ Our commitment is built on three core pillars: providing 100% original products,
                                 Money Back Guarantee
                             </h3>
                             <p>
-                               Shop with complete confidence! We offer a hassle-free money-back guarantee and official warranties on all genuine smartphones and accessories. 
+                               Shop with complete confidence! We offer a hassle-free money-back guarantee and official warranties on all genuine smartphones and accessories.
                             </p>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ Our commitment is built on three core pillars: providing 100% original products,
 
                 <div class="row justify-content-center">
                     <div class="col col-lg-7 col-md-8 col-sm-10">
-                        <div class="team_section_title text-center">
+                        <div class="text-center team_section_title">
                             <h2 class="title_text">Meet Our Team</h2>
                             <p class="mb-0">
                                Our experienced team is dedicated to providing expert advice, quality products, and exceptional customer service to help you stay connected with the latest technology.
@@ -185,10 +185,10 @@ Our commitment is built on three core pillars: providing 100% original products,
 
             </div>
         </section>
-      
 
-     
-     
+
+
+
 
     </main>
     <!-- main body - end
