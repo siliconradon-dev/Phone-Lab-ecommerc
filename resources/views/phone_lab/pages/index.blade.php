@@ -79,7 +79,7 @@
                             <div class="row align-items-center justify-content-lg-between">
                                 <div class="order-last col col-lg-6 col-md-6 col-sm-6">
                                     <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset('assets/images/slider/slider_img_1.jpg') }}" alt="Ecommerce">
+                                        <img src="{{ asset('assets/images/slider/slider1.jpeg') }}" alt="Ecommerce">
                                     </div>
                                 </div>
                                 <div class="col col-lg-5 col-md-6 col-sm-6">
@@ -106,7 +106,7 @@
                             <div class="row align-items-center justify-content-lg-between">
                                 <div class="order-last col col-lg-6 col-md-6 col-sm-6">
                                     <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset('assets/images/slider/slider_img_2.jpg') }}" alt="Ecommerce">
+                                        <img src="{{ asset('assets/images/slider/slider2.jpeg') }}" alt="Ecommerce">
                                     </div>
                                 </div>
                                 <div class="col col-lg-5 col-md-6 col-sm-6">
