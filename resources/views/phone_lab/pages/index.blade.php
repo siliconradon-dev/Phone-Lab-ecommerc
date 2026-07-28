@@ -167,7 +167,7 @@
 
 
 
-    <div class=" header_bottom" style="background: red">
+    <div class=" header_bottom" style="background: black; padding: 0px 0;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col col-md-3 col-6">
