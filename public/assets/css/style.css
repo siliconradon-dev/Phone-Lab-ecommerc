@@ -62,6 +62,48 @@
 */
 /* table of content - end
 ================================================== */
+
+
+.custom-carousel,
+  .custom-carousel .carousel-item,
+  .custom-carousel img {
+    height: 650px !important;
+    object-fit: cover;
+  }
+
+  /* රූපය සම්පූර්ණයෙන්ම ආවරණය කරන අඳුරු ස්තරය */
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* අඳුරු ආවරණය (50% කළු) */
+    z-index: 1; /* රූපයට ඉහළින් නමුත් අන්තර්ගතයට පහළින් */
+  }
+
+  /* අන්තර්ගතය වම් පසට සහ සිරස් අතට මැදට ගැනීම සඳහා (පෙර පැවති ස්ටයිල්ස්) */
+  .slider_content {
+    left: 10% !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    bottom: auto !important;
+    text-align: left !important;
+    max-width: 500px;
+    /* background: rgba(0, 0, 0, 0.4);  -- මෙය දැන් අවශ්‍ය නොවේ, මන්ද මුළු රූපයම අඳුරු කර ඇත */
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 2; /* අන්තර්ගතය ආවරණයට වඩා ඉදිරියෙන් තැබීමට */
+  }
+
+
+
+
+
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap");
@@ -103,6 +145,17 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .body_wrap {
     overflow: hidden;
@@ -1356,7 +1409,7 @@ hr {
 /* 3.1 - Header Section - start
 ================================================== */
 .header_section {
-    padding-bottom: 60px;
+    padding-bottom: 0px;
     background-color: #ffffff;
 }
 
@@ -1380,7 +1433,7 @@ hr {
 }
 
 .header_middle {
-    padding: 10px 0;
+    padding: 0px 0;
 }
 
 .header_select_options>li {
@@ -2495,7 +2548,7 @@ hr {
 }
 
 .main_slider .slider_image img {
-    float: right;
+    float: center;
 }
 
 .main_slider .small_title {
@@ -6524,7 +6577,7 @@ hr {
     }
 
     .header_middle {
-        padding: 6px 0;
+        padding: 0px 0;
     }
 
     .main_menu {
@@ -6588,7 +6641,7 @@ hr {
     }
 
     .header_section {
-        padding-bottom: 60px;
+        padding-bottom: 0px;
     }
 
     .header_section .header_bottom {

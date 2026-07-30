@@ -5,7 +5,7 @@
 @section('content')
     <main>
 
-        
+
         <!-- breadcrumb_section - start
                                 ================================================== -->
         <div class="breadcrumb_section">
@@ -30,7 +30,7 @@
                         <div class="contact_info_wrap">
                             <h3 class="contact_title">Address Information</h3>
                             <p>
-                               Visit our store to explore the latest smartphones and premium mobile accessories in person. Our team is ready to guide you to the perfect tech choice. 
+                               Visit our store to explore the latest smartphones and premium mobile accessories in person. Our team is ready to guide you to the perfect tech choice.
                             </p>
                             <div class="row">
                                 <div class="col col-md-12">
@@ -75,7 +75,7 @@
     <div class="contact_info_wrap">
         <h3 class="contact_title">Get in Touch & Inform Us</h3>
         <p>
-            Have any questions, feedback, or inquiries about our products and services? Drop us a message below, and our team will get back to you as soon as possible. 
+            Have any questions, feedback, or inquiries about our products and services? Drop us a message below, and our team will get back to you as soon as possible.
         </p>
 
         {{-- Success Message --}}
@@ -135,16 +135,16 @@
 
         <!-- contact_section - start================================================== -->
         <div class="map_section">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.531295640378!2d80.6381086!3d7.2940442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae36755287699a3%3A0x73c6251ad8d48d23!2sMegha%20Mobile%20(Pvt)%20Ltd!5e0!3m2!1sen!2slk!4v1780983904323!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.34569490152526!2d80.63752815127371!3d7.294064244707926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3679dbad82a2f%3A0x4c0c87dfb41a9bb8!2sPhone%20Repair%20-%20iPhone%20iPad%20Apple%20Samsung%20Huawei%20Repair%20And%20Service%20Center%20By%20Phone%20Lab!5e0!3m2!1sen!2slk!4v1785260934781!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!-- contact_section - end================================================== -->
 
-        
-                               
-                            
+
+
+
 
     </main>
-   
+
 @endsection
 
 

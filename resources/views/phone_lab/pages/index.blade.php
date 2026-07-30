@@ -32,138 +32,113 @@
 
 
 
-        <section class="slider_section">
-            <div class="main_slider" data-slick='{"arrows": false}'>
-                @forelse($banners as $banner)
-                    <div class="slider_item">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-lg-between">
-                                <div class="order-last col col-lg-6 col-md-6 col-sm-6">
-                                    <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset($banner->image) }}" alt="Slider Image">
-                                    </div>
-                                </div>
-                                <div class="col col-lg-5 col-md-6 col-sm-6">
-                                    <div class="slider_content">
-                                        @if ($banner->subtitle)
-                                            <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">
-                                                {{ $banner->subtitle }}</h3>
-                                        @endif
-                                        @if ($banner->title)
-                                            <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">
-                                                {{ $banner->title }}</h4>
-                                        @endif
-                                        @if ($banner->offer_text)
-                                            <p data-animation="fadeInUp2" data-delay=".6s">{{ $banner->offer_text }}</p>
-                                        @endif
-                                        @if ($banner->price_sale)
-                                            <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                                @if ($banner->price_del)
-                                                    <del>LKR {{ number_format($banner->price_del, 2) }}</del>
-                                                @endif
-                                                <span class="sale_price">LKR
-                                                    {{ number_format($banner->price_sale, 2) }}</span>
-                                            </div>
-                                        @endif
-                                        <a class="btn btn_primary"
-                                            href="{{ $banner->link ?? route('phone_lab.shop_grid') }}"
-                                            data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
-                                    </div>
-                                </div>
+<section class="slider_section">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+        <!-- Carousel Indicators (Dynamic) -->
+        <ol class="carousel-indicators">
+            @forelse($banners as $index => $banner)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+            @empty
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            @endforelse
+        </ol>
+
+        <!-- Carousel Inner Content -->
+        <div class="carousel-inner custom-carousel">
+            @forelse($banners as $index => $banner)
+                <!-- Dynamic Banner Slide -->
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }} position-relative">
+                    <img class="d-block w-100" src="{{ asset($banner->image) }}" alt="Slider Image">
+                    <div class="image-overlay"></div>
+
+                    <div class="carousel-caption d-none d-md-block text-start slider_content">
+                        @if ($banner->subtitle)
+                            <span class="badge bg-primary mb-2 px-3 py-2">{{ $banner->subtitle }}</span>
+                        @endif
+
+                        @if ($banner->title)
+                            <h2 class="display-6 fw-bold text-white">{{ $banner->title }}</h2>
+                        @endif
+
+                        @if ($banner->offer_text)
+                            <p class="text-light">{{ $banner->offer_text }}</p>
+                        @endif
+
+                        @if ($banner->price_sale)
+                            <div class="item_price mb-2 text-white">
+                                @if ($banner->price_del)
+                                    <del class="me-2 text-danger">LKR {{ number_format($banner->price_del, 2) }}</del>
+                                @endif
+                                <span class="sale_price fw-bold">LKR {{ number_format($banner->price_sale, 2) }}</span>
                             </div>
-                        </div>
+                        @endif
+
+                        <a class="btn btn-light btn-sm mt-2 btn_primary" href="{{ $banner->link ?? route('phone_lab.shop_grid') }}">Start Buying</a>
                     </div>
-                @empty
-                    <div class="slider_item">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-lg-between">
-                                <div class="order-last col col-lg-6 col-md-6 col-sm-6">
-                                    <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset('assets/images/slider/slider1.jpeg') }}" alt="Ecommerce">
-                                    </div>
-                                </div>
-                                <div class="col col-lg-5 col-md-6 col-sm-6">
-                                    <div class="slider_content">
-                                        <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Tech Products
-                                        </h3>
-                                        <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">UP TO 30% OFF I
-                                            Phone</h4>
-                                        <p data-animation="fadeInUp2" data-delay=".6s">The Best Gadgets Collection 2026</p>
-                                        <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                            <del>LKR 10520.00</del>
-                                            <span class="sale_price">LKR 10460.00</span>
-                                        </div>
-                                        <a class="btn btn_primary" href="{{ route('phone_lab.shop_grid') }}"
-                                            data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            @empty
+                <!-- Fallback Slide when $banners is empty -->
+                <div class="carousel-item active position-relative">
+                    <img class="d-block w-100" src="{{ asset('assets/images/slider/slider1.jpeg') }}" alt="Ecommerce">
+                    <div class="image-overlay"></div>
+
+                    <div class="carousel-caption d-none d-md-block text-start slider_content">
+                        <span class="badge bg-primary mb-2 px-3 py-2">විශේෂ දීමනාව</span>
+                        <h2 class="display-6 fw-bold text-white">නවීන E-commerce සාප්පු සවාරිය</h2>
+                        <p class="text-light">ඔබගේ අවශ්‍යතා සඳහා උසස් තත්වයේ භාණ්ඩ මෙහි ඇත.</p>
+                        <a class="btn btn-light btn-sm mt-2" href="{{ route('phone_lab.shop_grid') }}">Start Buying</a>
                     </div>
+                </div>
+            @endforelse
+        </div>
 
-                    <div class="slider_item">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-lg-between">
-                                <div class="order-last col col-lg-6 col-md-6 col-sm-6">
-                                    <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset('assets/images/slider/slider2.jpeg') }}" alt="Ecommerce">
-                                    </div>
-                                </div>
-                                <div class="col col-lg-5 col-md-6 col-sm-6">
-                                    <div class="slider_content">
-                                        <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Tech Products
-                                        </h3>
-                                        <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">UP TO 30% OFF
-                                            Speakers</h4>
-                                        <p data-animation="fadeInUp2" data-delay=".6s">The Best Gadgets Collection 2026</p>
-                                        <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                            <del>LKR 10520.00</del>
-                                            <span class="sale_price">LKR 10460.00</span>
-                                        </div>
-                                        <a class="btn btn_primary" href="{{ route('phone_lab.shop_grid') }}"
-                                            data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Carousel Controls -->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
 
-                    <div class="slider_item">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-lg-between">
-                                <div class="order-last col col-lg-6 col-md-6 col-sm-6">
-                                    <div class="slider_image" data-animation="fadeInRight" data-delay=".2s">
-                                        <img src="{{ asset('assets/images/slider/slider_img_3.jpg') }}" alt="Ecommerce">
-                                    </div>
-                                </div>
-                                <div class="col col-lg-5 col-md-6 col-sm-6">
-                                    <div class="slider_content">
-                                        <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Tech Products
-                                        </h3>
-                                        <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">UP TO 30% OFF
-                                            Computer Repair</h4>
-                                        <p data-animation="fadeInUp2" data-delay=".6s">The Best Gadgets Collection 2026
-                                        </p>
-                                        <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                            <del>LKR 10520.00</del>
-                                            <span class="sale_price">LKR 10460.00</span>
-                                        </div>
-                                        <a class="btn btn_primary" href="{{ route('phone_lab.shop_grid') }}"
-                                            data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-        </section>
+<!-- CSS Styles -->
+<style>
+    .custom-carousel,
+    .custom-carousel .carousel-item,
+    .custom-carousel img {
+        height: 750px !important;
+        object-fit: cover;
+    }
 
+    /* රූපය මත ඇති අඳුරු ආවරණය (Image Overlay) */
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
 
-
-
-
-
+    /* අන්තර්ගතය වම් පසට සහ සිරස් අතට මැදට ගැනීම */
+    .slider_content {
+        left: 10% !important;
+        right: auto !important;
+        top: 50% !important;
+        transform: translateY(-50%);
+        bottom: auto !important;
+        text-align: left !important;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 8px;
+        z-index: 2;
+    }
+</style>
 
 
 
