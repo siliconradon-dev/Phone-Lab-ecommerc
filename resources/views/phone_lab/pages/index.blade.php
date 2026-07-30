@@ -3,6 +3,13 @@
 @section('title', $siteSettings['site_name'] ?? 'Megha Mobile')
 
 @section('content')
+<style>
+    <!-- jQuery (Bootstrap 4 සඳහා අවශ්‍ය වේ) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</style>
     <main>
 
 
@@ -28,117 +35,86 @@
             </script>
         @endif
 
-
-
-
-
 <section class="slider_section">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
-        <!-- Carousel Indicators (Dynamic) -->
-        <ol class="carousel-indicators">
+        <!-- Indicators (Bootstrap 5) -->
+        <div class="carousel-indicators">
             @forelse($banners as $index => $banner)
-                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></button>
             @empty
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
             @endforelse
-        </ol>
+        </div>
 
-        <!-- Carousel Inner Content -->
+        <!-- Carousel Inner -->
         <div class="carousel-inner custom-carousel">
             @forelse($banners as $index => $banner)
-                <!-- Dynamic Banner Slide -->
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }} position-relative">
                     <img class="d-block w-100" src="{{ asset($banner->image) }}" alt="Slider Image">
                     <div class="image-overlay"></div>
-
                     <div class="carousel-caption d-none d-md-block text-start slider_content">
-                        @if ($banner->subtitle)
-                            <span class="badge bg-primary mb-2 px-3 py-2">{{ $banner->subtitle }}</span>
-                        @endif
-
                         @if ($banner->title)
                             <h2 class="display-6 fw-bold text-white">{{ $banner->title }}</h2>
                         @endif
-
-                        @if ($banner->offer_text)
-                            <p class="text-light">{{ $banner->offer_text }}</p>
-                        @endif
-
-                        @if ($banner->price_sale)
-                            <div class="item_price mb-2 text-white">
-                                @if ($banner->price_del)
-                                    <del class="me-2 text-danger">LKR {{ number_format($banner->price_del, 2) }}</del>
-                                @endif
-                                <span class="sale_price fw-bold">LKR {{ number_format($banner->price_sale, 2) }}</span>
-                            </div>
-                        @endif
-
-                        <a class="btn btn-light btn-sm mt-2 btn_primary" href="{{ $banner->link ?? route('phone_lab.shop_grid') }}">Start Buying</a>
+                        <a class="btn btn-danger btn-sm mt-2" href="{{ $banner->link ?? route('phone_lab.shop_grid') }}">Start Buying</a>
                     </div>
                 </div>
             @empty
-                <!-- Fallback Slide when $banners is empty -->
+                <!-- Fallback Slide 1 -->
                 <div class="carousel-item active position-relative">
                     <img class="d-block w-100" src="{{ asset('assets/images/slider/slider1.jpeg') }}" alt="Ecommerce">
                     <div class="image-overlay"></div>
+                    <div class="carousel-caption text-start slider_content">
+                        <span class="badge text-danger mb-2 px-0 py-2 fs-4">Tech Products</span>
+                        <h2 class="display-6 fw-bold text-white">UP TO 30% OFF<br>Computer Repair</h2>
+                        <p class="text-light">The Best Gadgets Collection 2026.</p>
+                        <a class="btn btn-danger btn-sm mt-2" href="{{ route('phone_lab.shop_grid') }}">Start Buying</a>
+                    </div>
+                </div>
 
-                    <div class="carousel-caption d-none d-md-block text-start slider_content">
-                        <span class="badge bg-primary mb-2 px-3 py-2">විශේෂ දීමනාව</span>
-                        <h2 class="display-6 fw-bold text-white">නවීන E-commerce සාප්පු සවාරිය</h2>
-                        <p class="text-light">ඔබගේ අවශ්‍යතා සඳහා උසස් තත්වයේ භාණ්ඩ මෙහි ඇත.</p>
-                        <a class="btn btn-light btn-sm mt-2" href="{{ route('phone_lab.shop_grid') }}">Start Buying</a>
+                <!-- Fallback Slide 2 (කලින් මඟහැරී තිබූ carousel-item ටැගය මෙහි නිවැරදි කර ඇත) -->
+                <div class="carousel-item position-relative">
+                    <img class="d-block w-100" src="{{ asset('assets/images/slider/slider3.jpeg') }}" alt="Ecommerce">
+                    <div class="image-overlay"></div>
+                    <div class="carousel-caption text-start slider_content">
+                        <span class="badge text-danger mb-2 px-0 py-2 fs-4">Tech Products</span>
+                        <h2 class="display-6 fw-bold text-white">UP TO 30% OFF<br>Computer Repair</h2>
+                        <p class="text-light">The Best Gadgets Collection 2026.</p>
+                        <a class="btn btn-danger btn-sm mt-2" href="{{ route('phone_lab.shop_grid') }}">Start Buying</a>
+                    </div>
+                </div>
+
+                <!-- Fallback Slide 3 -->
+                <div class="carousel-item position-relative">
+                    <img class="d-block w-100" src="{{ asset('assets/images/slider/slider2.jpeg') }}" alt="Ecommerce">
+                    <div class="image-overlay"></div>
+                    <div class="carousel-caption text-start slider_content">
+                        <span class="badge text-danger mb-2 px-0 py-2 fs-4">Tech Products</span>
+                        <h2 class="display-6 fw-bold text-white">UP TO 40% OFF<br>Computer Repair</h2>
+                        <p class="text-light">The Best Gadgets Collection 2026.</p>
+                        <a class="btn btn-danger btn-sm mt-2" href="{{ route('phone_lab.shop_grid') }}">Start Buying</a>
                     </div>
                 </div>
             @endforelse
         </div>
 
-        <!-- Carousel Controls -->
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <!-- Controls (Bootstrap 5) -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </section>
+<!-- CSS Styles -->
 
 <!-- CSS Styles -->
-<style>
-    .custom-carousel,
-    .custom-carousel .carousel-item,
-    .custom-carousel img {
-        height: 750px !important;
-        object-fit: cover;
-    }
-
-    /* රූපය මත ඇති අඳුරු ආවරණය (Image Overlay) */
-    .image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1;
-    }
-
-    /* අන්තර්ගතය වම් පසට සහ සිරස් අතට මැදට ගැනීම */
-    .slider_content {
-        left: 10% !important;
-        right: auto !important;
-        top: 50% !important;
-        transform: translateY(-50%);
-        bottom: auto !important;
-        text-align: left !important;
-        max-width: 500px;
-        padding: 20px;
-        border-radius: 8px;
-        z-index: 2;
-    }
-</style>
 
 
 

@@ -64,10 +64,19 @@
 ================================================== */
 
 
-.custom-carousel,
-  .custom-carousel .carousel-item,
+.custom-carousel {
+    height: 690px !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .custom-carousel .carousel-item {
+    height: 100% !important;
+  }
+
   .custom-carousel img {
-    height: 650px !important;
+    height: 100% !important;
+    width: 100% !important;
     object-fit: cover;
   }
 
@@ -78,12 +87,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* අඳුරු ආවරණය (50% කළු) */
-    z-index: 1; /* රූපයට ඉහළින් නමුත් අන්තර්ගතයට පහළින් */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
 
-  /* අන්තර්ගතය වම් පසට සහ සිරස් අතට මැදට ගැනීම සඳහා (පෙර පැවති ස්ටයිල්ස්) */
+  /* ඩෙස්ක්ටොප් සඳහා අන්තර්ගතය */
   .slider_content {
+    position: absolute !important;
     left: 10% !important;
     right: auto !important;
     top: 50% !important;
@@ -91,15 +101,36 @@
     bottom: auto !important;
     text-align: left !important;
     max-width: 500px;
-    /* background: rgba(0, 0, 0, 0.4);  -- මෙය දැන් අවශ්‍ය නොවේ, මන්ද මුළු රූපයම අඳුරු කර ඇත */
     padding: 20px;
     border-radius: 8px;
-    z-index: 2; /* අන්තර්ගතය ආවරණයට වඩා ඉදිරියෙන් තැබීමට */
+    z-index: 2;
   }
 
+  /* ජංගම දුරකථන සඳහා (Mobile View Responsive Fix) */
+  @media (max-width: 768px) {
+    .custom-carousel {
+      height: 450px !important; /* මොබයිල් වලදී ස්ලයිඩරයේ උස ප්‍රමාණවත් පරිදි තබා ගැනීම */
+    }
 
+    .slider_content {
+      left: 5% !important;
+      right: 5% !important;
+      top: 50% !important;
+      transform: translateY(-50%);
+      max-width: 90% !important;
+      padding: 15px;
+      text-align: center !important; /* මොබයිල් වලදී අකුරු මැදට ගැනීම */
+    }
 
+    .slider_content h2 {
+      font-size: 20px !important; /* මොබයිල් වලට ගැළපෙන ලෙස මාතෘකාවේ ප්‍රමාණය සැකසීම */
+      color: #fff !important;
+    }
 
+    .slider_content p {
+      font-size: 13px !important;
+    }
+  }
 
 
 
